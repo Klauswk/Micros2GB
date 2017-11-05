@@ -1,0 +1,26 @@
+{
+  "name": "nodeihm",
+  "description": "An simples HMI building on node and electron",
+  "main": "app/main.js",
+  "authors": [
+    "Klaus Klein"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "log",
+    "bbb",
+    "bigbluebutton"
+  ],
+  "homepage": "https://github.com/Klauswk/hminode",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.6.5",
+    "bootstrap": "^3.3.7"
+  }
+}

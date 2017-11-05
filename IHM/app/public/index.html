@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <style type="text/css">
+    </style>
+    <meta charset="utf-8">
+    <meta name="author" content="Klaus Klein">
+    <link rel="stylesheet" href="./../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+</head>
+
+<body ng-app="hminode">
+    <div ng-controller="AppController as app" class="container" style="padding-top: 15px">
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="text-muted">Horário do Sistema</i>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <h3 class="text-muted text-right">12:05:55</h3>
+                        </div>
+                    </div>
+
+                    <div class='panel-body'>
+                        <div class='form-group'>
+                            <input type='time' class='form-control'>
+                        </div>
+                        <div class='form-group'>
+                            <button type='submit' class='btn btn-primary btn-block'>Novo Horário</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="text-danger">Temperatura</i>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <h3 class="text-danger text-right">20℃</h3>
+                        </div>
+                    </div>
+                    <div class='panel-body'>
+                        <div class='form-group'>
+                            <button type='submit' class='btn btn-danger btn-block'>Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="col-sm-10">
+                    <h3 class="text-primary">Ultimas Mensagens recebidas do sistema:</h3>
+                </div>
+                <div class="col-sm-2">
+                    <button class="form-control btn-primary" ng-click='app.clearLog()'>Limpar Log</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                </table>
+                <table class="table table-striped scrollable">
+                    <tbody>
+                        <tr ng-class='message.logLevel' ng-repeat='message in app.messages| limitTo: -100'>
+                            <td>{{::message.date | date:'HH:mm:ss'}}</td>
+                            <td>{{::message.message}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script type="text/javascript" src="./../../bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
