@@ -8,10 +8,13 @@ app.on('ready', () => {
 
   const mainWindow = new BrowserWindow();
   mainWindow.loadURL('file://' + __dirname + '/public/index.html');
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
+  const fs = require('fs');
+  const path = require('path');
+  var config = JSON.parse(fs.readFileSync( path.join(__dirname, '../config.json')));
 
   const SerialPort = require('serialport');
-  const port = new SerialPort('/dev/ttyACM0', { baudRate: 9600 });
+  const port = new SerialPort(config.port, { baudRate: config.baudRate });
   const Readline = SerialPort.parsers.Readline;
   const Delimiter = SerialPort.parsers.Delimiter;
   const parser = port.pipe(new Readline({ delimiter: '\987' }));

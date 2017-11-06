@@ -17,7 +17,6 @@ gulp.task('build', function() {
 });
 
 gulp.task('package',function() {
-    console.log(electronPackager);
     electronPackager({dir:"hminodejs/resources/app/"})
       .then((appPaths) => { 
           console.log("Build complete");
