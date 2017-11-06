@@ -16,8 +16,8 @@ gulp.task('build', function() {
     .pipe(gulp.dest('hminodejs/resources/app'));
 });
 
-gulp.task('package',function() {
-    electronPackager({dir:"hminodejs/resources/app/"})
+gulp.task('package',['clean','build'],function() {
+    electronPackager({dir:"hminodejs/resources/app/", tmpdir:false, overwrite:true,name:"IHM"})
       .then((appPaths) => { 
           console.log("Build complete");
       })
