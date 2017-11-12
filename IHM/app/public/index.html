@@ -19,16 +19,16 @@
                     </div>
                     <div>
                         <div class="form-group">
-                            <h3 class="text-muted text-right">12:05:55</h3>
+                            <h3 class="text-muted text-right">{{app.getSystemTime() | date:'HH:mm:ss'}}</h3>
                         </div>
                     </div>
 
                     <div class='panel-body'>
                         <div class='form-group'>
-                            <input type='time' class='form-control'>
+                            <input ng-model="app.time" type='time' class='form-control'>
                         </div>
                         <div class='form-group'>
-                            <button type='submit' class='btn btn-primary btn-block'>Novo Horário</button>
+                            <button ng-disabled="!app.time" ng-click="app.sendClock(app.time)" type='submit' class='btn btn-primary btn-block'>Enviar Horário</button>
                         </div>
                     </div>
 
@@ -46,7 +46,28 @@
                     </div>
                     <div class='panel-body'>
                         <div class='form-group'>
-                            <button type='submit' class='btn btn-danger btn-block'>Atualizar</button>
+                            <button ng-click="app.getTemperature()" type='submit' class='btn btn-danger btn-block'>Atualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="text-warning">Alarmes</i>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <h3 class="text-warning text-right">{{app.getAlarm()}}</h3>
+                        </div>
+                    </div>
+                    <div class='panel-body'>
+                        <div class='form-group'>
+                            <input ng-model="app.alarm.temperature" type='number' placeholder="Valor da Temperatura" class='form-control'>
+                            <input ng-model="app.alarm.time" type='time' class='form-control'>
+                        </div>
+                        <div class='form-group'>
+                            <button ng-disabled="!app.alarm.temperature || !app.alarm.time" ng-click="app.sendAlarm(app.alarm)" type='submit' class='btn btn-warning btn-block'>Enviar</button>
                         </div>
                     </div>
                 </div>
@@ -78,7 +99,6 @@
                 </table>
             </div>
         </div>
-    </div>
     </div>
 
     <script type="text/javascript" src="./../../bower_components/angular/angular.min.js"></script>
